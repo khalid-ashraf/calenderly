@@ -4,6 +4,8 @@ import { db } from "@/drizzle/db";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ScheduleForm from "@/components/forms/ScheduleForm";
 
+export const revalidate = 0;
+
 export default async function SchedulePage() {
   const { userId, redirectToSignIn } = await auth();
 
