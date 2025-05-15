@@ -1,11 +1,10 @@
 "use client";
 
-import { Fragment, memo, useCallback, useState } from "react";
+import { Fragment, memo, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { createEvent, updateEvent } from "@/server/actions/events.action";
 import { DAYS_OF_WEEK_IN_ORDER } from "@/data/constants";
 import { scheduleFormSchema } from "@/schema/schedule";
 import { timeToInt } from "@/lib/utils";
@@ -245,5 +244,7 @@ const ScheduleForm = ({
     </Form>
   );
 };
+
+ScheduleForm.displayName = "ScheduleForm";
 
 export default memo(ScheduleForm);

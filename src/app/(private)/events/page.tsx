@@ -65,8 +65,10 @@ const UserEvents = memo(({ events }: { events: Event[] }) => {
   );
 });
 
+UserEvents.displayName = "UserEvents";
+
 // Child component to display if the user has no events
-const NoEventDisplay = () => {
+const NoEventDisplay = memo(() => {
   return (
     <div className='flex flex-col justify-center items-center gap-7'>
       <CalendarRange className='size-16 mx-auto' />
@@ -80,7 +82,9 @@ const NoEventDisplay = () => {
       </Button>
     </div>
   );
-};
+});
+
+NoEventDisplay.displayName = "NoEventDisplay";
 
 const EventCard = memo(
   ({ id, isActive, name, description, durationMinutes, clerkUserId }: Event) => {
@@ -106,3 +110,5 @@ const EventCard = memo(
     );
   }
 );
+
+EventCard.displayName = "EventCard";

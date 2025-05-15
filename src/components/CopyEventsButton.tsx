@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, memo } from "react";
 import { Button, ButtonProps } from "./ui/button";
 import { Copy, CopyCheck, CopyX } from "lucide-react";
 
@@ -36,7 +36,9 @@ const CopyEventsButton = ({
   );
 };
 
-export default CopyEventsButton;
+CopyEventsButton.displayName = "CopyEventsButton";
+
+export default memo(CopyEventsButton);
 
 const getCopyIcon = (copyState: CopyStateType) => {
   switch (copyState) {

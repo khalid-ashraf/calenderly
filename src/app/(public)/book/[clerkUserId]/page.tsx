@@ -10,7 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+
 import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -28,7 +28,7 @@ type EventCardProps = {
   clerkUserId: string;
 };
 
-export default async function BookingPage({ params }: { params: BookingPageParamsType }) {
+export default async function BookingPage({ params }: { params: Promise<BookingPageParamsType> }) {
   const { clerkUserId } = await params;
 
   const events = await db.query.EventTable.findMany({
@@ -79,3 +79,4 @@ const EventCard = memo(
     );
   }
 );
+EventCard.displayName = "EventCard";

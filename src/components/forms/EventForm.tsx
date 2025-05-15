@@ -57,16 +57,19 @@ const EventForm = ({
     },
   });
 
-  const onSubmit = useCallback(async (values: FormDataType) => {
-    const action = event == null ? createEvent : updateEvent.bind(null, event.id);
+  const onSubmit = useCallback(
+    async (values: FormDataType) => {
+      const action = event == null ? createEvent : updateEvent.bind(null, event.id);
 
-    const data = await action(values);
+      const data = await action(values);
 
-    if (data?.error)
-      form.setError("root", {
-        message: "There was an error saving your event",
-      });
-  }, []);
+      if (data?.error)
+        form.setError("root", {
+          message: "There was an error saving your event",
+        });
+    },
+    [event, form]
+  );
 
   return (
     <Form {...form}>
@@ -228,5 +231,7 @@ const EventForm = ({
     </Form>
   );
 };
+
+EventForm.displayName = "EventForm";
 
 export default memo(EventForm);

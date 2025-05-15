@@ -7,11 +7,12 @@ import EventForm from "@/components/forms/EventForm";
 
 export const revalidate = 0;
 
-export default async function EditEventPage({
-  params: { eventId },
-}: {
-  params: { eventId: string };
-}) {
+interface PageProps {
+  params: Promise<{ eventId: string }>;
+}
+
+export default async function EditEventPage({ params }: PageProps) {
+  const { eventId } = await params;
   const { userId, redirectToSignIn } = await auth();
 
   if (userId === null) return redirectToSignIn();
@@ -25,7 +26,7 @@ export default async function EditEventPage({
   return (
     <Card className='max-w-md mx-auto'>
       <CardHeader>
-        <CardTitle>New Event</CardTitle>
+        <CardTitle>Edit Event</CardTitle>
       </CardHeader>
 
       <CardContent>
