@@ -17,7 +17,9 @@ import Link from "next/link";
 import { formatEventDescription } from "@/lib/formatters";
 
 type BookingPageParamsType = {
-  clerkUserId: string;
+  params: Promise<{
+    clerkUserId: string;
+  }>;
 };
 
 type EventCardProps = {
@@ -28,7 +30,7 @@ type EventCardProps = {
   clerkUserId: string;
 };
 
-export default async function BookingPage({ params }: { params: Promise<BookingPageParamsType> }) {
+export default async function BookingPage({ params }: BookingPageParamsType) {
   const { clerkUserId } = await params;
 
   const events = await db.query.EventTable.findMany({
